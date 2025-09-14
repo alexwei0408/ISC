@@ -17,5 +17,8 @@ a)Natural spline: The boundary condition is $S{''}(-1)=S{''}(1)=0.$ For the Rung
 
 b)Clamped spline: The boundary condition uses the exact first derivatives $f^{'}(-1),f'(1).$ This enforces the correct slope at the endpoints and allows the spline to capture the function’s behavior more accurately. As $N$ increases, the advantage of using the correct derivative information becomes more pronounced
 
-Code is designed by Chatgpt
+Code is designed by Chatgpt  
 [view the code here](https://github.com/alexwei0408/ISC/blob/main/week2/cubicSpline.py)
+
+
+2

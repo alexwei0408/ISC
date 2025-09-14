@@ -1,6 +1,6 @@
 Problem description
 
-Consider approximating $f(x)=1/(1+25x^{2}),x\in [-1,1].$ Let N+1 be the number of nodes.Using cubic spline interpolation, find 𝑁 such that the error of approximation is less than 10^{-10}
+Consider approximating $f(x)=1/(1+25x^{2}),x\in [-1,1].$ Let N+1 be the number of nodes.Using cubic spline interpolation, find 𝑁 such that the error of approximation is less than $10^{-10}$
 
 1.Error formula
 For a uniform grid and natural cubic spline interpolation, The error bound is:

@@ -6,4 +6,8 @@ For a uniform grid and natural cubic spline interpolation, The error bound is:
 
 $$
 \|f - S\|_\infty \le \frac{5}{384} \, h^4 \max_{x \in [a,b]} \big| f^{(4)}(x) \big|
-$$
+$$  
+
+2.Observertion  
+For N=2365, measured max error $\simeq 10^{-10}$.  
+For N=13333, measure max error $\simeq 10^{-14}/$

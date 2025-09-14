@@ -7,6 +7,7 @@ For a uniform grid and natural cubic spline interpolation, The error bound is:
 $$
 \|f - S\|_\infty \le \frac{5}{384} \, h^4 \max_{x \in [a,b]} \big| f^{(4)}(x) \big|
 $$
+
 where
 
 $h = \tfrac{b-a}{N}$ is the step size,

@@ -21,4 +21,4 @@ Code is designed by Chatgpt
 [view the code here](https://github.com/alexwei0408/ISC/blob/main/week2/cubicSpline.py)
 
 
-2
+2）Using Chebyshev nodes, find $𝑁$ such that the error of approximation is less than $10{-10}$

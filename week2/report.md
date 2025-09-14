@@ -18,7 +18,9 @@ a)Natural spline: The boundary condition is $S{''}(-1)=S{''}(1)=0.$ For the Rung
 b)Clamped spline: The boundary condition uses the exact first derivatives $f^{'}(-1),f'(1).$ This enforces the correct slope at the endpoints and allows the spline to capture the function’s behavior more accurately. As $N$ increases, the advantage of using the correct derivative information becomes more pronounced
 
 Code is designed by Chatgpt  
-[view the code here](https://github.com/alexwei0408/ISC/blob/main/week2/cubicSpline.py)
+[cubic spline interpolation](https://github.com/alexwei0408/ISC/blob/main/week2/cubicSpline.py)  
+[Cgebyshev node of second kind]
 
+2）Using Chebyshev nodes, find $𝑁$ such that the error of approximation is less than $10{-10}$  
 
-2）Using Chebyshev nodes, find $𝑁$ such that the error of approximation is less than $10{-10}$
+i)Use Chebyshev polynomials of the second kind, we have $x_{k}=cos(\frac{k\displaystyle \pi }{n}),k=0,1,2,...,n$

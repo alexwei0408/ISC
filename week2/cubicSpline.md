@@ -9,5 +9,5 @@ $$
 $$  
 
 2.Observertion  
-For N=2365, measured max error $\simeq 10^{-10}$.  
-For N=13333, measure max error $\simeq 10^{-14}/$
+For N=2365, measured max error $\simeq 10^{-10}$.For N=13333, measure max error $\simeq 10^{-14}.$  
+

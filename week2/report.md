@@ -26,4 +26,4 @@ ii)Minimal number of nodes N=121, measure max error $\simeq 10^{-10}$.
 
 Code is designed by Chatgpt  
 [cubic spline interpolation](https://github.com/alexwei0408/ISC/blob/main/week2/cubicSpline.py)  
-[Cgebyshev node of second kind]
+[Chebyshev node of second kind](https://github.com/alexwei0408/ISC/blob/main/week2/Chebysehv.py)

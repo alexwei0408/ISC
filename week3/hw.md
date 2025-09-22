@@ -26,7 +26,7 @@ When $m=2$, $\int_{-1}^{1}x^{2}dx=\frac{2}{3}$, $I_{2}=(\frac{2}{3})[2(-\frac{1}
 When $m=4$, $\int_{-1}^{1}x^{4}dx=\frac{2}{5}$, $I_{2}=\frac{1}{6}\neq Q(f)$.  
 Threrfore the degree of exactness r is 3, the order of infintesimal p is 5.  
 b)When $m=0$, $I_{4}(1)=(\frac{1}{4})(1+3+3+1)=2=Q(1)$.  
-  When $m=2$, $I_{4}(x^{2})=(\frac{1}{4})(1+\frac{1}{3}+\frac{1}{3}+1)$.  
+  When $m=2$, $I_{4}(x^{2})=(\frac{1}{4})(1+\frac{1}{3}+\frac{1}{3}+1)=\frac{2}{3}=Q(x^{2})$.  
   When $m=4$, $I_{4}(x^{4})=(\frac{1}{4})(1+\frac{1}{27}+\frac{1}{27}+1)=\frac{14}{27}\neq Q(x^{4})$.  
 Therefore the degree of exactness r is 3, the order of infintesimal p is 5.  
 

@@ -3,27 +3,26 @@
 $$
 \{ f_{0}=f(-1)=1,f_{1}=f'(-1)=1,f_{2}=f'(1)=2,f_{3}=f(2)=1\}
 $$
-## prove that the Hermite-Birkoff interpolating polynomial $H_{3}$ does not exist for them.
+## prove that the Hermite-Birkoff interpolating polynomial $H\text{a'}_{3}$ does not exist for them.
 
-sol
-Let $H_{3}(x)=a_{3}x^{3}+a_{2}x^{2}+a_{1}x+a_{0}$. Then $H'_{3}(x)=3a_{3}x^{2}+2a_{2}x+a_{1}$.  
+sol  
+Let $H_{3}(x)=a_{3}x^{3}+a_{2}x^{2}+a_{1}x+a_{0}$. Then $H_3'(x) = 3a_{3}x^{2} + 2a_{2}x + a_{1}$.  
 Therefore,
 
 $$
-\left\{
-\begin{aligned}
-a_{0} &= 1 \\
--b_{2} + a_{2} &= -\tfrac{1}{2} \\
-b_{2} + 2a_{4} &= -\tfrac{1}{12} \\
-b_{2} &= -\tfrac{1}{30}
-\end{aligned}
-\right.
+\begin{cases}
+a_{0} = 1 \\
+-b_{2} + a_{2} = -\tfrac{1}{2} \\
+b_{2} + 2a_{4} = -\tfrac{1}{12} \\
+b_{2} = -\tfrac{1}{30}
+\end{cases}
 $$
+
+
 
 From $(4)-(1)$, then we get  a linear system, that is
 
 $$
-B\overrightarrow{a}=
 \begin{pmatrix}
 3&1&1 \\
 3&-2&1\\
@@ -34,13 +33,15 @@ a_{3}\\
 a_{2}\\
 a_{1}
 \end{pmatrix}
-=
+\=
 \begin{pmatrix}
 0\\
 1\\
 2\\
 \end{pmatrix}.
 $$
+
+
 
 By reduce row echelon form , we get
 
@@ -50,7 +51,7 @@ $$
 3&-2&1|1\\
 3&2&1|2\\
 \end{bmatrix}
-\xrightarrow{R_{3}-R_{1},R_{2}-R_{1}}
+\xrightarrow{R_{3}-R_{1},R_{2}-R_{1}} 
 \begin{bmatrix}
 3&1&1|0\\
 0&-3&0|1\\
@@ -87,14 +88,12 @@ $$
 Therefore, we have
 
 $$
-\left\{
-\begin{aligned}
+\begin{cases}
 a_{0}&=1 \\
 -b_{2}+a_{2}&=-\frac{1}{2} \\
 b_{2}+2a_{4}&=\frac{1}{12} \\
-b_{2}=\frac{1}{30}
-\end{aligned}
-\right .
+b_{2}&=\frac{1}{30} \\
+\end{cases}
 $$
 
 Hence, we conclude that $a_{0}=1,a_{2}=-\frac{7}{15},a_{4}=\frac{1}{40},b_{2}=\frac{1}{30}$.

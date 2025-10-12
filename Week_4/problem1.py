@@ -1,56 +1,61 @@
+# Convergence study for ∫_0^∞ 1/(1+25x^2) dx using the substitution x=t/(1-t)
+# and composite trapezoidal rule on t∈[0,1]. We produce a log-log plot of
+# absolute error vs. step size h, and overlay an O(h^2) reference line.
+
 import math
+import numpy as np
+import matplotlib.pyplot as plt
 
-MAX_ABS_FPP = 35152.0 / 625.0
+# True value
+true_val = math.pi / 10.0
 
-def f(t: float) -> float:
-    return 1.0 / ((1.0 - t)*(1.0 - t) + 25.0 * t * t)
+# Transformed integrand on [0,1]:
+# x = t/(1-t), dx = dt/(1-t)^2, f(x)=1/(1+25x^2)
+# => integrand(t) = 1 / ( (1-t)^2 + 25 t^2 )
+def f_t(t: np.ndarray) -> np.ndarray:
+    return 1.0 / ((1.0 - t)**2 + 25.0 * t**2)
 
-# Composite trapezoidal rule on [0,1] with n panels (h = 1/n)
-def trapezoid(n: int) -> float:
-    h = 1 / n
-    total = 0 * (f(0) + f(1))
-    for k in range(1, n):
-        total += f(k * h)
-    return h * total
+def trap_integral_on_unit(N: int) -> float:
+    h = 1.0 / (N - 1)
+    t = np.linspace(0.0, 1.0, N)
+    vals = f_t(t)
+    s = 0.5 * (vals[0] + vals[-1]) + vals[1:-1].sum()
+    return h * s
 
+# Build N sequence by doubling subinterval count: N -> 2*(N-1)+1
+Ns = []
+hs = []
+errs = []
+approxs = []
 
-# Trapezoid error bound on [0,1]: |E_n| <= (1/12) * h^2 * max|f''| = (max|f''| / 12) / n^2
-def error_bound_trapezoid(n: int) -> float:
-    return (MAX_ABS_FPP / 12.0) / (n * n)
+N = 2000  # starting nodes
+tol = 1e-12  # compute a bit beyond 1e-10 to show slope clearly
+while True:
+    approx = trap_integral_on_unit(N)
+    err = abs(approx - true_val)
+    h = 1.0 / (N - 1)
+    Ns.append(N); hs.append(h); errs.append(err); approxs.append(approx)
+    if err <= tol or N > 200000:
+        break
+    N = 2 * (N - 1) + 1
 
-# Given tolerance eps, choose n to guarantee |E_n| <= eps
-def n_for_tolerance(eps: float) -> int:
-    if eps <= 0:
-        raise ValueError("eps must be positive")
-    need = math.sqrt((MAX_ABS_FPP / 12.0) / eps)
-    return math.ceil(need)
+# Build O(h^2) reference line passing through the first point
+C = errs[0] / (hs[0]**2)
+ref = [C * (h**2) for h in hs]
 
-if __name__ == "__main__":
-    # Target: error < 1e-10
-    eps = 1e-10
+# Plot: error vs h (log-log), with O(h^2) reference
+plt.figure()
+plt.loglog(hs, errs, marker='o', label='Trapezoidal error')
+plt.loglog(hs, ref, linestyle='--', label='$\mathcal{O}(h^2)$ reference')
+plt.gca().invert_xaxis()  # smaller h to the right
+plt.xlabel('Step size $h=1/(N-1)$')
+plt.ylabel('Absolute error')
+plt.title('Convergence of Composite Trapezoidal Rule (x = t/(1-t))')
+plt.legend()
+plt.grid(True, which='both')
+plt.show()
 
-    # Compute n from the bound
-    n = n_for_tolerance(eps)  # should be 216544
-    h = 1.0 / n
-    nodes_total = n + 1
-
-    # Trapezoidal approximation
-    I_n = trapezoid(n)
-
-    # Theoretical error bound
-    bound = error_bound_trapezoid(n)
-
-    # (Optional) Reference true value (for display only, not needed by the method)
-    I_true = math.pi / 10.0
-    observed_err = abs(I_n - I_true)
-
-    print(f"Target tolerance (bound)      : min_error = {eps:.1e}")
-    print(f"max|f''| on [0,1]             :{MAX_ABS_FPP:.6f}")
-    print(f"Required n from bound         : n = {n}")
-    print(f"Total nodes                    : n+1 = {nodes_total}")
-    print(f"Step size                      : h = {h:.12e}")
-    print("----------------------------------------------------")
-    print(f"Trapezoidal approximation I_n : {I_n:.15f}")
-    print(f"Theoretical error bound       : <= {bound:.3e}")
-    print(f"(Reference true value)        : {I_true:.15f}")
-    print(f"(Observed |I_n - true|)       : {observed_err:.3e}")
+# Also print the table
+print(f"{'N(nodes)':>10}  {'h':>14}  {'Approximation':>20}  {'Abs. Error':>12}")
+for N, h, a, e in zip(Ns, hs, approxs, errs):
+    print(f"{N:10d}  {h:14.12f}  {a:20.15f}  {e:12.3e}")

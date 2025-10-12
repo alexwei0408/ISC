@@ -55,11 +55,27 @@ First, we use integration by part to vanish singularity pole.
 
 $$
 \begin{aligned}
-\int_{0}^{1}\frac{\ln(x)}{1+25x^{2}}dx 
+I=\int_{0}^{1}\frac{\ln(x)}{1+25x^{2}}dx 
 &= \ln(x)(\frac{\arctan(5x)}{5})|_{0}^{1} -\int_{0}^{1}\frac{\arctan(5x)}{5}d\ln(x) \\
 &=0- \frac{1}{5} \lim_{a \to 0} \int_{a}^{1} \frac{\arctan(5x)}{x}dx \\
 \end{aligned}
 $$
 
-Thus, we want to approximate $f(x)= \frac{\arctan(5x)}{x}.$ Cleary $f(0)=-1$
-Method:
+Then, we define a smooth function $f(x)= \frac{\arctan(5x)}{5x},$ with $f(0)=\lim_{x \to 0} \frac{\arctan(5x)}{5x}=1$. So that $I=-\int_{0}^{1}f(x)dx$.  
+Let N be the number of nodes with step size $h=\frac{1}{N-1}$ and $x_{i}=ih$, for $i=1,2,3,\cdots$. Then we use composite trapezoidal rule to approximate.  
+
+```
+pseudocode of composite trapezoidal rule
+h = 1/(N-1)
+sum = 0.5*phi(0) + 0.5*phi(1)
+for i = 1 .. N-2:
+    sum += phi(i*h)
+I_h = - h * sum
+```
+
+
+Result:  
+<img width="900" height="257" alt="{234F7469-2F1E-40AD-9853-C629F3A17CEC}" src="https://github.com/user-attachments/assets/c0fd4bb2-b24c-4b0e-9fcf-3f51b091d771" />  
+<img width="900" height="827" alt="{4635E61D-448D-44B9-8A7D-0E8F814A1CCC}" src="https://github.com/user-attachments/assets/a65defc1-e469-4ab9-9ea3-8646aff0f190" />
+
+

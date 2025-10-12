@@ -21,20 +21,16 @@ Now, we want to use Trapezoidal Rule to approximate this value.
 
 Let $x=\frac{t}{1-t}, t\in[0,1), dx=\frac{1}{(1-t)^{2}dt}.$ Then $f(t)=\frac{1}{(1-t)^{2}+25t^{2}}.$  
 Take a partition $P = \{ 0 = x_{0} \lt x_{1} \lt \cdots \lt x_{n-1} \lt x_{n} = 1 \}$.   
-Formula: $I_{n}(f) \simeq h(\frac{1}{2}f(0)+f(x_{1})+\cdots+f(x_{n-1})+\frac{1}{2}f(1))\text{, where h}=\frac{1}{n}.$  
-Calculate the number of n.
+Formula: $I_{n}(f) \simeq h(\frac{1}{2}f(0)+f(x_{1})+\cdots+f(x_{n-1})+\frac{1}{2}f(1))\text{, where h}=\frac{1}{N-1}.$  
 
-$$
-\begin{aligned}
-|E_{n}| &\le \frac{1}{12}h^{2}\max_{[0,1]}|f''(t)| \\
-\Rightarrow n^{2}&\ge \frac{\max_{[0,1]}|f''(t)|}{12|E_{n}|}\simeq 216544\\
-\end{aligned}.
-$$
 
 Result:  
-<img width="712" height="247" alt="{8EF60262-4F2F-449F-A1AB-3C948634D49A}" src="https://github.com/user-attachments/assets/7598e44c-5bc5-4c41-a18e-99ce3e806842" />
+<img width="831" height="218" alt="{EE90E235-8151-4262-A7BE-8014400C3064}" src="https://github.com/user-attachments/assets/d29f6740-fdff-4ae3-b7d0-bc85584f1007" />  
+<img width="802" height="609" alt="{95BE0506-B496-4F10-8926-855CA1F64302}" src="https://github.com/user-attachments/assets/be515db7-c167-4e01-9dfb-49bdcbc6c2fa" />
 
-#Remark: Why we don't use $f(x)=\frac{1}{1+25x^{2}}.$ By the error formula of trapezoidal rule
+# Remark: Why we don't use $f(x)=\frac{1}{1+25x^{2}}.$
+
+By the error formula of trapezoidal rule
 
 $$
 \begin{align}
@@ -45,6 +41,9 @@ E(f) &\le \frac{b-a}{12}h^{2} \max_{[a,b]} |f''| \\
 $$
 
 From the error formula , we can see that L become larger, n is also.(ex: if $L=4x10^{8},n=2.3x10^{18}$ )  
+
+---
+
 2.
 
 $$
@@ -78,4 +77,7 @@ Result:
 <img width="900" height="257" alt="{234F7469-2F1E-40AD-9853-C629F3A17CEC}" src="https://github.com/user-attachments/assets/c0fd4bb2-b24c-4b0e-9fcf-3f51b091d771" />  
 <img width="900" height="827" alt="{4635E61D-448D-44B9-8A7D-0E8F814A1CCC}" src="https://github.com/user-attachments/assets/a65defc1-e469-4ab9-9ea3-8646aff0f190" />
 
+---
+
+Conclusion： Both problem1 and problem2 use trapezoidal rule to approximate function give $O(h^{2})$.
 

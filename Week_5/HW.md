@@ -67,7 +67,7 @@ By Crank-Nicolson method, we have $u_{n+1}=u_{n}+\frac{h}{2}(f(t_{n},u_{n})+f(t_
 By $y'=f(t,y(t))$, the exact solution can be written as $y(t_{n+1})=y(t_{n})+\int_{t_{n}}^{t_{n+1}}f(\tau,y(\tau))\,d\tau$ . By trapezoidal rule, we get
 
 $$
-\int_{t_{n}}^{t_{n+1}}f(\tau,y(\tau))\,d\tau=\frac{h}{2}(f_{n}+f_{n+1})\cdot \frac{h^{3}}{12}f''(\xi_{n},y(\xi_{n})),\text{ for some suitable } \xi_{n} \in (t_{n},t_{n+1}).
+\int_{t_{n}}^{t_{n+1}}f(\tau,y(\tau))\,d\tau=\frac{h}{2}(f_{n}+f_{n+1}) - \frac{h^{3}}{12}f''(\xi_{n},y(\xi_{n})),\text{ for some suitable } \xi_{n} \in (t_{n},t_{n+1}).
 $$
 
 By taking $y_{n}=u_{n}$
@@ -76,4 +76,4 @@ $$
 \frac{y_{n+1}-y_{n}}{h}= \frac{1}{2}(f(t_{n},u_{n})+f(t_{n+1},u_{n+1}))- \frac{h^{2}}{12}f''(\xi_{n},y(\xi_{n}))
 $$
 
-Therefore, when it up to infinitesimal of order 2 with respect to h, provided that $f \in C^{2}(I)$.
+Hence, the truncation error is $y(t_{n+1})-u_{n+1}=O(h^{3})$, which implies that the global error is $O(^{2})$, and so Crank-Nicolson is a 2nd-order method with respect to h.

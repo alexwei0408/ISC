@@ -32,17 +32,14 @@ Result：
 
 # Analysis  
 Why numerical solution convergence only when $h=0.1$.  
-Since by $\star$, we conclude that $u_{n}$ is only depends on h. Thus for $h=0.4$, we can see that numerical solution oscillation on -1 and 1. For $h=0.41$, $|1-5h|=1.05 > 1$, hence the numerical solution divergence.  
-For $h=0.1$, numerical solution converges and we have truncation error,
+Since by $\star$, we conclude that $u_{n}$ is only depends on |1-5h|. Thus for $h=0.4$, $|1-5h|=1$, and so we can see that numerical solution oscillation on -1 and 1. For $h=0.41$, $|1-5h|=1.05 > 1$, hence the numerical solution divergence.  
+For $h=0.1$, $|1-5h|<1$, the numerical solution converges and we have local truncation error,
 
 $$
-\begin{aligned}
-\tau_{n+1}(h) &= \frac{u_{n+1}-u_{n}}{h}-f_{n} \\
-&= \frac{u_{n}}{h}(e^{-5h}-1+5h) \\
-\end{aligned}
+\tau_{n+1}=\frac{1}{h}(u(t_{n+1})-u(t_{n})-h(f(t_{n},u(t_{n})))=\mathbb{O}(h).
 $$
 
-By Taylor series which gives us $\tau_{n+1}=u_{n}(\frac{25h}{2}+O(h^{2}))$. Hnece the global truncation error is $O(h)$.
+Therefore, the global error satiefies $E(h)= \mathbb{O}(h)$, which is confirmed by the log–log convergence plot.
 
 # b) Use backward Euler method to solve the following problem
 $$
@@ -68,13 +65,22 @@ Result:
 Analysis:  
 Each iteration step depends on $(1+5h)^{-n}$, and $1+5h >1$. Therefore, numerical solution is convengent.
 
-Conclusion:
+Conclusion: Forward Euler suffers from a strict stability condition $0<h<0.4$. When $h=0.41$, the numerical solution divergent.  
+However, backward Euler method give a stable amplification factor $G(h)=\frac{1}{1+5h} <1$, for each steps. 
 ___
 ## 2) Consider solving the following problem using forward Euler Method
 
 $$
-y' = y(1-y), \quad y(0)=y_0, \quad 0<y_0<1.
+y' = y(1-y), \quad y(0)=y_{0}, \quad 0 <y_{0} <1.
 $$
 
 Find the range of h such that the solution is qualitatively correct.
+
+By using forward Euler method, we have $u_{n+1}=u_{n}+hf(t_{n},u_{n})=u_{n}+hu_{n}(1-u_{n})$. Since the solution is qualitatively correct which implies that 
+
+$$
+0 < u_{j} < 1, \text{ for any j}=0,1,\cdots
+$$
+
+Then, $u_{n+1}=u_{n}(1+h-hu_{n})$
 

@@ -44,13 +44,31 @@ $$
 
 By Taylor series which gives us $\tau_{n+1}=u_{n}(\frac{25h}{2}+O(h^{2}))$. Hnece the global truncation error is $O(h)$.
 
----
 # b) Use backward Euler method to solve the following problem
 $$
 y' = -5 y, \quad y(0)=1.
 $$
 
+By backward Euler method, 
 
+$$
+\begin{aligned}
+u_{n+1} &= u_{n}+hf_{n+1} \\
+&=u_{n}+h(-5u_{n+1}) \Rightarrow u_{n+1}=\frac{u_{n}}{1+5h}
+\end{aligned}
+$$
+
+Result:  
+[h=0.1](https://github.com/alexwei0408/ISC/blob/main/Week_5/result/be_vs_true_h0_1.csv);  
+[h=.4](https://github.com/alexwei0408/ISC/blob/main/Week_5/result/be_vs_true_h0_4.csv);  
+[h=0.41](https://github.com/alexwei0408/ISC/blob/main/Week_5/result/be_vs_true_h0_41.csv);  
+<img width="900" height="680" alt="iteration_error_BE" src="https://github.com/user-attachments/assets/7a5004be-d88a-4b32-ae5e-f66fbbaadae5" />  
+<img width="900" height="680" alt="convergence_Oh_BE" src="https://github.com/user-attachments/assets/528e1d9a-e3ac-4df9-8704-e20af76f5b9e" />  
+
+Analysis:  
+Each iteration step depends on $(1+5h)^{-n}$, and $1+5h >1$. Therefore, numerical solution is convengent.
+
+Conclusion:
 ___
 ## 2) Consider solving the following problem using forward Euler Method
 

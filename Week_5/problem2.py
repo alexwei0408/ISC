@@ -42,7 +42,7 @@ def main():
     steps = 400  # 稍微多一些步，避免「收斂很慢」被誤判
     print(f"Forward Euler on y'=y(1-y), u0={u0}, steps={steps}\n")
 
-    hs = [round(0.1*k, 1) for k in range(1, 22)]  # 0.1 ... 2.1
+    hs = [round(0.1*k, 1) for k in range(1, 21)]  # 0.1 ... 2.0
 
     print(f"{'h':>4} | {'inv(single)':>12} | {'inv(all u0)':>11} | {'converges?':>11} | final u")
     print("-"*64)
@@ -59,7 +59,7 @@ def main():
     print("  - Expect h=2.1 to overshoot/exit. For 1 < h < 2, some u0 may overshoot.\n")
 
     # Plot illustrative trajectories
-    demo_hs = [0.1, 1.0, 1.9, 2.1]
+    demo_hs = [0.1, 1.0, 1.9]
     plt.figure()
     for h in demo_hs:
         u = fe_logistic(h, u0=u0, steps=steps)

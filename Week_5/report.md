@@ -76,11 +76,24 @@ $$
 
 Find the range of h such that the solution is qualitatively correct.
 
-By using forward Euler method, we have $u_{n+1}=u_{n}+hf(t_{n},u_{n})=u_{n}+hu_{n}(1-u_{n})$. Since the solution is qualitatively correct which implies that 
+By using forward Euler method, we have $u_{n+1}=u_{n}+hf(t_{n},u_{n})=u_{n}+hu_{n}(1-u_{n})$. Now, we want to check the numerical solution is convergent, for which range of h
 
 $$
 0 < u_{j} < 1, \text{ for any j}=0,1,\cdots
 $$
 
-Then, $u_{n+1}=u_{n}(1+h-hu_{n})$
+Then, we have $0 < u_{n+1}=u_{n}(1+h-hu_{n}) < 1$. For lower bound condtion, clearly $u_{j}>0$ for each $j=1,2,3 \cdots$ Then $1+h-hu_{n} > 0$ is always true if $h > 0$. 
+For upper bound condition, take $u_{n}=\frac{1}{2}$, and so
+
+$$
+(1+\frac{h}{2}) < 1 \Rightarrow h < 2
+$$
+
+Hence, $0 < h < 2$, the numerical solution converges.
+
+Now, we want to check the range of h such that $0 < u_{n} < 1$. By $u_{n+1}=(1+h)u_{n}-hu_{n}^{2}$, its critical point is $u_{n}=\frac{1+h}{2h}$. If $0 < h < 1$, then $0 < u_{n+1} \le 1$.
+
+<img width="766" height="524" alt="{AA81F393-887D-467F-8D1A-99B9375107B3}" src="https://github.com/user-attachments/assets/1923c0ef-937a-4747-af4c-71b8de8af662" />  
+<img width="900" height="680" alt="logistic_FE_h05_h10_h20" src="https://github.com/user-attachments/assets/37562fe4-afe3-46b2-8dc0-25bb8146d6ea" />
+
 

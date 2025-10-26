@@ -1,12 +1,12 @@
-## 7) Prove that the gamma function 
+### ** 7) Prove that the gamma function 
 
 $$
 \Gamma(z)=\int_{0}^{\infty}e^{-t}t^{z-1} dt, \quad z\in\mathbb{C},\quad Rez>0,
 $$
 
-is the solution of the difference equation $\Gamma(z+1)=z\Gamma(z)$.
+is the solution of the difference equation $\Gamma(z+1)=z\Gamma(z)$. **
 
-sol:
+sol:  
 Goal: We want to show $\Gamma(z+1)=\int_{0}^{\infty} e^{-t}t^{(z+1)-1}dt=z\int_{0}^{\infty}e^{-t}t^{z-1}dt=z\Gamma(z)$.
 
 By using integration by parts, then we have 
@@ -21,10 +21,10 @@ $$
 
 ---
 
-## 9) Consider the following family of one-step method depending on the real parameter $\alpha$
+### 9) Consider the following family of one-step method depending on the real parameter $\alpha$ 
 
 $$
-u_{n+1}=u_{n}+h\left[ (1-\frac{\alpha}{2}\right)f(x_{n},u_{n})+ \frac{\alpha}{2}f(x_{n+1},u_{n+1})] 
+u_{n+1}=u_{n}+h\left[ (1-\frac{\alpha}{2})f(x_{n},u_{n})+ \frac{\alpha}{2}f(x_{n+1},u_{n+1})\right] \quad-(i)
 $$
 
 Study their consistency as a function of $\alpha$; then, take $\alpha=1$ and use the corresponding method to solve the Cauchy problem
@@ -36,10 +36,9 @@ y(0)=1.
 \end{cases}
 $$
 
-Determine the values of h in correspondence of which the method is absolutely stable.
+Determine the values of h in correspondence of which the method is  absolutely stable.
 
 sol:
-
 Take $y'(x_{n})=f(x_{n},y_{n})$, then by Taylor expansion, we get 
 
 $$
@@ -57,6 +56,45 @@ $$
 f(x_{n+1},{u_{n+1}})&=f(x_{n}+h,u_{n}+(u_{n+1}-u_{n})) \\
 &=f(x_{n},u_{n})+hf_{x}(x_{n},u_{n})+ (u_{n+1}-u_{n})f_{u}(x_{n},u_{n})+O(h^{2})\\
 by (\star) \Rightarrow\quad&=f(x_{n})+hf_{x}(x_{n})+\left[ hf(x_{n})+\frac{h^{2}}{2}(\partial_{t}f+f\partial_{u}u)(x_{n},u_{n})\right]f_{u}+O(h^{3}) \\
-&=f+h_{x}+hff_{y}+O(h^{2})
+&=f+hf_{x}+hff_{u}+O(h^{2})
 \end{aligned}
 $$
+
+From $(i)$, then we get 
+
+$$
+\begin{aligned}
+u_{n+1} &=u_{n}+h\left[ (1-\frac{\alpha}{2})f+ \frac{\alpha}{2}(f+hf_{x}+hff_{u})\right] +O(h^{3})\\
+&=u_{n}+h\left[f + \frac{\alpha}{2}(hf_{x}+hff_{u})\right]+O(h^{3})
+\end{aligned}
+$$
+
+Compare numerical solution to the exact solution, then we get
+
+$$
+\tau_{n}=y(x_{n+1})-u_{n+1}=\frac{1-\alpha}{2}h^{2}(f_{x}+ff_{u})+O(h^{3}).
+$$
+
+Hence, we conclude that
+
+$$
+\text{truncation error=}
+\begin{cases}
+O(h^{3}), \quad \text{if } \alpha = 1 \\
+O(h^{2}), \quad otherwise.
+\end{cases}
+$$
+
+Now, we take $\alpha=1$, then 
+
+$$
+\begin{aligned}
+u_{n+1}&= u_{n}+\frac{h}{2}(f_{n}+f_{n+1}) \\
+&= u_{n}-5h(u_{n}+u_{n+1})  \\
+&=\frac{1-5h}{1+5h}u_{n}
+\end{aligned}
+$$
+
+We want to find the range of h such that the method is absolutely stable, that $|\frac{1-5h}{1+5h}| \le 1$ which implies that $h \ge 0$.
+
+

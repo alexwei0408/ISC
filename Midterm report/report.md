@@ -1,3 +1,5 @@
+# The AAA Algorithm for Rational Approximation
+
 ## 1）Motivation  
 We want to approximate a function defined on a set Z $(ex:Z=\left[ -1,1\right])$ by finding a stable and high accuracy rational function.  
 
@@ -35,8 +37,8 @@ $$
 
 Remark  
 - The first sum $\sum_{j=1}^{m}\frac{w_{j}F_{i}^{(m)}}{Z_{i}^{(m)}-z_{j}}$ represents the numerator $n(Z_i^{(m)})$ evaluated at the unused sample points.
-- The second sum $\sum_{j=1}^{m}\frac{w_{j}f_{j}}{Z_{i}^{(m)}-z_{j}}$ represents the denominator $d(Z_i^{(m)})$ evaluated for the barycentric formula.
--  Their difference calls the linearized residual, and minimizing this residual ensures optimal weight selection.
+- The second sum $\sum_{j=1}^{m}\frac{w_{j}f_{j}}{Z_{i}^{(m)}-z_{j}}$ represents the weighted numerator using function values at support points.
+-  Their difference calls the linearized residual, and minimizing this residual ensures optimal weight selection for the rational approximation $r(z)=\frac{n(z)}{d(z)}$
 
 Note that: $Z^{(m)}=(Z_{1}^{(m)},\dots,Z_{M-m}^{(m)})^{T}$; $F^{(m)}=f(Z^{(m)})$. 
 
@@ -158,6 +160,15 @@ We try to approximate a Runge function $f(x)=\frac{1}{1+25x^{2}}$, for $x \in \l
 
 Here is the result of the approximation
 <img width="900" height="506" alt="{EEC5BD54-C652-4018-AF50-D9ED65BB086E}" src="https://github.com/user-attachments/assets/76728eec-843b-4b7c-b38d-9ee833ad56f2" />
-<img width="900" height="298" alt="{8003363A-6ED8-483F-9089-6C4356F00BF4}" src="https://github.com/user-attachments/assets/e676c69d-5d5d-4bf1-bd34-aa5e3175aaa0" />
+<img width="900" height="298" alt="{8003363A-6ED8-483F-9089-6C4356F00BF4}" src="https://github.com/user-attachments/assets/e676c69d-5d5d-4bf1-bd34-aa5e3175aaa0" />  
 
-[sample code](https://github.com/alexwei0408/ISC/blob/main/Midterm%20report/aaa.py)
+From the result, we can conclude that, 
+- We approximate the runge function by using Taylor series will fail. This is becasue the runge function has complex poles at $z = \pm \frac{1}{5}i$, and so there have radius of convergence $|z|<\frac{1}{5}$. When the point z is outside this radius, Taylor series will diverge exponentially.  
+- Approximate Runge function by using AAA-algorithm, it will give a nice approximate and also just use only 3 support points. For the whole domain, it still can be work.  
+
+[Here is sample code for the result.](https://github.com/alexwei0408/ISC/blob/main/Midterm%20report/aaa.py)
+
+---
+
+## 6) Conclusion
+The AAA-algorithm is a fully automatic method for rational function approximation that combines three key innovations: barycentric representation, greedy support point selection, and SVD-based weight computation.

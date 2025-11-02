@@ -158,5 +158,6 @@ We try to approximate a Runge function $f(x)=\frac{1}{1+25x^{2}}$, for $x \in \l
 
 Here is the result of the approximation
 <img width="900" height="506" alt="{EEC5BD54-C652-4018-AF50-D9ED65BB086E}" src="https://github.com/user-attachments/assets/76728eec-843b-4b7c-b38d-9ee833ad56f2" />
-
 <img width="900" height="298" alt="{8003363A-6ED8-483F-9089-6C4356F00BF4}" src="https://github.com/user-attachments/assets/e676c69d-5d5d-4bf1-bd34-aa5e3175aaa0" />
+
+[sample code](https://github.com/alexwei0408/ISC/blob/main/Midterm%20report/aaa.py)
